@@ -1,0 +1,21 @@
+{
+  "name": "mixing-colors",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/matsu7089/mixing-colors.git",
+  "author": "matsu7089",
+  "license": "MIT",
+  "scripts": {
+    "dev": "parcel src/main.js",
+    "build": "parcel build src/main.js -d docs/ --no-content-hash --no-source-maps"
+  },
+  "dependencies": {
+    "phina.js": "^0.2.3",
+    "matter-js": "^0.14.2"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-static-files-copy": "^2.5.0"
+  },
+  "private": true
+}
