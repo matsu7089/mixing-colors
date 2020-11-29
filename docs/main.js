@@ -26,5 +26,5 @@ var e,t=arguments[3];!function(n){if("object"==typeof exports&&"undefined"!=type
 },{"phina.js":"OtoZ","../constants":"iJA9","../matter/":"d6KO","../display/":"kIeH"}],"fj5L":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),Object.defineProperty(exports,"MainScene",{enumerable:!0,get:function(){return e.default}});var e=r(require("./MainScene"));function r(e){return e&&e.__esModule?e:{default:e}}
 },{"./MainScene":"usmn"}],"epB2":[function(require,module,exports) {
-"use strict";var e=t(require("phina.js")),a=require("./constants"),n=require("./scene/");function t(e){return e&&e.__esModule?e:{default:e}}var r=[{className:n.MainScene.prototype.className,label:"main"}];e.default.main(function(){e.default.game.GameApp({width:a.SCREEN.W,height:a.SCREEN.H,startLabel:"main",scenes:r}).run()});
+"use strict";var e=t(require("phina.js")),a=require("./constants"),n=require("./scene/");function t(e){return e&&e.__esModule?e:{default:e}}var r=[{className:n.MainScene.prototype.className,label:"main"}];e.default.main(function(){e.default.game.GameApp({width:a.SCREEN.W,height:a.SCREEN.H,startLabel:"main",runner:function(e){requestAnimationFrame(e)},scenes:r}).run()});
 },{"phina.js":"OtoZ","./constants":"iJA9","./scene/":"fj5L"}]},{},["epB2"], null)
