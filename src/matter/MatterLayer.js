@@ -28,6 +28,9 @@ export default phina.define('mc.matter.MatterLayer', {
       const mouse = Matter.MouseConstraint.create(this.mtEngine, {
         mouse: Matter.Mouse.create(e.app.canvas.domElement),
       })
+      ;['startdrag', 'enddrag'].forEach((name) => {
+        Matter.Events.on(mouse, name, mtEventCallback)
+      })
       Matter.World.add(this.mtWorld, mouse)
     })
 
