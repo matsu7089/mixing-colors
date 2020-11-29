@@ -1,14 +1,82 @@
 import phina from 'phina.js'
 import Matter from 'matter-js'
 
+import { COLOR } from '../constants'
+
 export default phina.define('mc.display.Shape', {
   superClass: phina.display.Shape,
 
   /** Matter.Body */
   mtBody: null,
 
+  /** 数を表示するラベル */
+  label: null,
+
+  /** cmyのリスト */
+  cmyList: null,
+
+  /** 一時的に衝突を無効にするか */
+  isInvalid: null,
+
   init(options) {
     this.superInit(options)
+
+    this.label = phina.display
+      .Label({
+        y: 5,
+        fontSize: 50,
+        text: '1',
+        fill: COLOR.BASE,
+        fontWeight: '600',
+      })
+      .addChildTo(this)
+
+    this.cmyList = options.cmyList || [{ c: 1, m: 0, y: 0 }]
+    this.applyCmyList()
+
+    if (options.isInvalid) {
+      this.isInvalid = true
+      let frame = 0
+      const callback = () => {
+        if (++frame === 30) {
+          this.isInvalid = false
+          this.off('enterframe', callback)
+        }
+      }
+      this.on('enterframe', callback)
+    }
+  },
+
+  /**
+   * cmyListを反映させます
+   */
+  applyCmyList() {
+    const len = this.cmyList.length
+    const cmy = { c: 0, m: 0, y: 0 }
+
+    this.cmyList.forEach((v) => {
+      cmy.c += v.c / len
+      cmy.m += v.m / len
+      cmy.y += v.y / len
+    })
+
+    const r = Math.floor((1 - cmy.c) * 255)
+    const g = Math.floor((1 - cmy.m) * 255)
+    const b = Math.floor((1 - cmy.y) * 255)
+
+    this.fill = `rgb(${r}, ${g}, ${b})`
+    this.label.text = len.toString()
+
+    return this
+  },
+
+  /**
+   * mtBodyにラベルを設定します
+   * @param {String} label 設定するラベル
+   */
+  mtSetLabel(label) {
+    this.mtBody.plugin.mcLabel = label
+    return this
   },
 
   // Matter.Body.xxxを直接呼べるようにする
