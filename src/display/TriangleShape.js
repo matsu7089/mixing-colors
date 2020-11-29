@@ -24,6 +24,7 @@ export default phina.define('mc.display.TriangleShape', {
       restitution: 0.5,
     })
     this.mtSetAngle((this.rotation - this.rotationOffset) * Math.DEG_TO_RAD)
+    this.mtSetLabel('triangle')
 
     // mtBodyから自分にアクセスできるようにする
     this.mtBody.plugin.mcObject = this

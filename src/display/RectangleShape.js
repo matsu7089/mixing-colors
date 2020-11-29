@@ -21,6 +21,7 @@ export default phina.define('mc.display.RectangleShape', {
       restitution: 0.5,
     })
     this.mtSetAngle(this.rotation * Math.DEG_TO_RAD)
+    this.mtSetLabel('rectangle')
 
     // mtBodyから自分にアクセスできるようにする
     this.mtBody.plugin.mcObject = this
