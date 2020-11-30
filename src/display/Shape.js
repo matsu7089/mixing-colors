@@ -1,7 +1,7 @@
 import phina from 'phina.js'
 import Matter from 'matter-js'
 
-import { COLOR } from '../constants'
+import { COLOR, FONT } from '../constants'
 
 export default phina.define('mc.display.Shape', {
   superClass: phina.display.Shape,
@@ -20,11 +20,11 @@ export default phina.define('mc.display.Shape', {
 
     this.label = phina.display
       .Label({
-        y: 5,
         fontSize: 50,
         text: '1',
         fill: COLOR.BASE,
-        fontWeight: '600',
+        fontFamily: FONT.DEFAULT,
+        fontWeight: '700',
       })
       .addChildTo(this)
 
