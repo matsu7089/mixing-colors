@@ -73,6 +73,8 @@ export default phina.define('mc.scene.MainScene', {
       }
       // 同じ種類のオブジェクト同士
       else if (bodyA.plugin.mcLabel === bodyB.plugin.mcLabel) {
+        // どちらもドラッグ中でなければreturn
+        if (!bodyA.plugin.isDrag && !bodyB.plugin.isDrag) return
         if (mcObjA.cmyList.length + mcObjB.cmyList.length > 5) return
 
         if (bodyA.speed < bodyB.speed) {

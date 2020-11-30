@@ -15,9 +15,6 @@ export default phina.define('mc.display.Shape', {
   /** cmyのリスト */
   cmyList: null,
 
-  /** 一時的に衝突を無効にするか */
-  isInvalid: null,
-
   init(options) {
     this.superInit(options)
 
@@ -33,18 +30,6 @@ export default phina.define('mc.display.Shape', {
 
     this.cmyList = options.cmyList || [{ c: 1, m: 0, y: 0 }]
     this.applyCmyList()
-
-    if (options.isInvalid) {
-      this.isInvalid = true
-      let frame = 0
-      const callback = () => {
-        if (++frame === 30) {
-          this.isInvalid = false
-          this.off('enterframe', callback)
-        }
-      }
-      this.on('enterframe', callback)
-    }
   },
 
   /**
