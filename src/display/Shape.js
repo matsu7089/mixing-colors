@@ -22,9 +22,11 @@ export default phina.define('mc.display.Shape', {
       .Label({
         fontSize: 50,
         text: '1',
-        fill: COLOR.BASE,
+        fill: '#888',
         fontFamily: FONT.DEFAULT,
         fontWeight: '700',
+        stroke: '#fff',
+        strokeWidth: 12,
       })
       .addChildTo(this)
 
