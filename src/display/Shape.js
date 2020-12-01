@@ -45,6 +45,10 @@ export default phina.define('mc.display.Shape', {
       cmy.y += v.y / len
     })
 
+    cmy.c = Math.min(cmy.c, 1) * 0.7
+    cmy.m = Math.min(cmy.m, 1) * 0.7
+    cmy.y = Math.min(cmy.y, 1) * 0.7
+
     const r = Math.floor((1 - cmy.c) * 255)
     const g = Math.floor((1 - cmy.m) * 255)
     const b = Math.floor((1 - cmy.y) * 255)
