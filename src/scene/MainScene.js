@@ -1,4 +1,5 @@
 import phina from 'phina.js'
+import Matter from 'matter-js'
 import { SCREEN, COLOR } from '../constants'
 
 import { MatterLayer } from '../matter/'
@@ -58,8 +59,6 @@ export default phina.define('mc.scene.MainScene', {
       const { bodyA, bodyB } = e.pairs[0]
       const mcObjA = bodyA.plugin.mcObject
       const mcObjB = bodyB.plugin.mcObject
-
-      if (mcObjA.isInvalid || mcObjB.isInvalid) return
 
       // 壁と衝突したとき
       if (bodyA.plugin.mcLabel === 'wall') {
@@ -132,45 +131,27 @@ export default phina.define('mc.scene.MainScene', {
   },
 
   _createWall() {
-    const size = 500
+    const size = 1000
+
+    const options = {
+      isStatic: true,
+    }
 
     const walls = [
       // top
-      RectangleShape({
-        x: SCREEN.W / 2,
-        y: -size / 2,
-        width: SCREEN.W + size * 2,
-        height: size,
-      }),
+      Matter.Bodies.rectangle(SCREEN.W / 2, -size / 2, SCREEN.W + size * 2, size, options),
       // bottom
-      RectangleShape({
-        x: SCREEN.W / 2,
-        y: SCREEN.H + size / 2,
-        width: SCREEN.W + size * 2,
-        height: size,
-      }),
+      Matter.Bodies.rectangle(SCREEN.W / 2, SCREEN.H + size / 2, SCREEN.W + size * 2, size, options),
       // left
-      RectangleShape({
-        x: -size / 2,
-        y: SCREEN.H / 2,
-        width: size,
-        height: SCREEN.H + size * 2,
-      }),
+      Matter.Bodies.rectangle(-size / 2, SCREEN.H / 2, size, SCREEN.H + size * 2, options),
       // right
-      RectangleShape({
-        x: SCREEN.W + size / 2,
-        y: SCREEN.H / 2,
-        width: size,
-        height: SCREEN.H + size * 2,
-      }),
+      Matter.Bodies.rectangle(SCREEN.W + size / 2, SCREEN.H / 2, size, SCREEN.H + size * 2, options),
     ]
 
-    walls.forEach((wall) => {
-      wall.mtSetStatic(true)
-      wall.mtSetLabel('wall')
+    Matter.World.add(this.mtLayer.mtWorld, walls)
 
-      wall.addChildTo(this.mtLayer)
-      wall.setVisible(false)
+    walls.forEach((wall) => {
+      wall.plugin.mcLabel = 'wall'
     })
   },
 })
