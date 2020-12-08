@@ -20,6 +20,7 @@ export default phina.define('mc.scene.MainScene', {
   level: null,
   stage: null,
   time: null,
+  isClear: null,
 
   answers: null,
 
@@ -88,8 +89,9 @@ export default phina.define('mc.scene.MainScene', {
     })
 
     this.time = 0
-    this.level = 2
+    this.level = 1
     this.stage = 1
+    this.isClear = false
 
     this._createStage()
   },
@@ -131,6 +133,8 @@ export default phina.define('mc.scene.MainScene', {
   },
 
   _onCollision(e) {
+    if (this.isClear) return
+
     const { bodyA, bodyB } = e.pairs[0]
     const mcObjA = bodyA.plugin.mcObject
     const mcObjB = bodyB.plugin.mcObject
@@ -183,16 +187,8 @@ export default phina.define('mc.scene.MainScene', {
     }
 
     if (this.answers.every((v) => v.isCorrect)) {
-      const children = this.mtLayer.children
-      const len = children.length
-
-      for (let i = 0; i < len; ++i) {
-        children[0].remove()
-      }
-      this.topBar.children.clear()
-
-      this.stage++
-      this._createStage()
+      this.isClear = true
+      this._transionNextStage()
     }
   },
 
@@ -230,8 +226,20 @@ export default phina.define('mc.scene.MainScene', {
           stroke: cmyToRgb(cmyList),
           strokeWidth: 20,
           sideIndent: 0.5,
+          rotation: -180,
         })
+        .setScale(0)
         .addChildTo(this.topBar)
+
+      starShape.tweener.wait(i * 200).to(
+        {
+          scaleX: 1,
+          scaleY: 1,
+          rotation: 0,
+        },
+        500,
+        'swing'
+      )
 
       answers.push({
         starShape,
@@ -242,6 +250,52 @@ export default phina.define('mc.scene.MainScene', {
 
     this.answers = answers
     this.stageLabel.text = `stage: ${this.stage}`
+
+    this.isClear = false
+  },
+
+  _transionNextStage() {
+    this.topBar.children.forEach((star, i) => {
+      star.tweener
+        .clear()
+        .wait(i * 200)
+        .to(
+          {
+            scaleX: 0,
+            scaleY: 0,
+            rotation: 180,
+          },
+          500,
+          'swing'
+        )
+        .call(() => {
+          star.remove()
+        })
+    })
+
+    this.mtLayer.children.forEach((shape, i) => {
+      shape.tweener
+        .wait(i * 200)
+        .to(
+          {
+            scaleX: 0,
+            scaleY: 0,
+          },
+          500,
+          'easeOutSine'
+        )
+        .call(() => {
+          shape.remove()
+        })
+    })
+
+    this.tweener
+      .clear()
+      .wait(this.mtLayer.children.length * 200 + 500)
+      .call(() => {
+        this.stage++
+        this._createStage()
+      })
   },
 
   _createWall() {
