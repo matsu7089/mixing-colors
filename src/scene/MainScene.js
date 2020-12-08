@@ -4,6 +4,7 @@ import { SCREEN, COLOR, FONT, BASE_COLOR, MIXED_COLORS } from '../constants'
 
 import { MatterLayer } from '../matter/'
 import { CircleShape, RectangleShape, TriangleShape } from '../display/'
+import { Wave } from '../effect/'
 
 import { cmyExact, cmyToRgb } from '../utils'
 
@@ -146,6 +147,8 @@ export default phina.define('mc.scene.MainScene', {
       mcObjB.cmyList.forEach((cmy) => {
         this._spawn(bodyB.plugin.mcLabel, cmy, bodyB.position)
       })
+
+      Wave(mcObjB.fill, mcObjB.position).addChildTo(this)
       mcObjB.remove()
 
       this._checkClear()
@@ -160,10 +163,14 @@ export default phina.define('mc.scene.MainScene', {
         mcObjB.cmyList.push(...mcObjA.cmyList)
         mcObjB.applyCmyList()
         mcObjA.remove()
+
+        Wave(mcObjB.fill, mcObjB.position).addChildTo(this)
       } else {
         mcObjA.cmyList.push(...mcObjB.cmyList)
         mcObjA.applyCmyList()
         mcObjB.remove()
+
+        Wave(mcObjA.fill, mcObjA.position).addChildTo(this)
       }
 
       this._checkClear()
@@ -269,6 +276,8 @@ export default phina.define('mc.scene.MainScene', {
           'swing'
         )
         .call(() => {
+          const pos = star.position.clone().add(this.topBar.position)
+          Wave(star.fill, pos).addChildTo(this)
           star.remove()
         })
     })
@@ -282,9 +291,10 @@ export default phina.define('mc.scene.MainScene', {
             scaleY: 0,
           },
           500,
-          'easeOutSine'
+          'easeInSine'
         )
         .call(() => {
+          Wave(shape.fill, shape.position).addChildTo(this)
           shape.remove()
         })
     })
