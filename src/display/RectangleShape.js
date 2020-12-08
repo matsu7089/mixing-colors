@@ -8,6 +8,8 @@ export default phina.define('mc.display.RectangleShape', {
 
   init(options) {
     options = {}.$safe(options, {
+      width: 100,
+      height: 100,
       backgroundColor: 'transparent',
       fill: 'blue',
       stroke: 'transparent',

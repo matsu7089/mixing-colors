@@ -14,7 +14,7 @@ export default phina.define('mc.display.TriangleShape', {
       backgroundColor: 'transparent',
       fill: 'green',
       stroke: 'transparent',
-      radius: 32,
+      radius: 87,
     })
     this.superInit(options)
 

@@ -11,7 +11,7 @@ export default phina.define('mc.display.CircleShape', {
       backgroundColor: 'transparent',
       fill: 'red',
       stroke: 'transparent',
-      radius: 32,
+      radius: 56,
     })
     this.superInit(options)
 
