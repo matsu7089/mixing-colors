@@ -23,10 +23,11 @@ export const cmySum = (cmyList) => {
  * @returns {boolean} exact
  */
 export const cmyExact = (cmyListA, cmyListB) => {
+  if (cmyListA.length !== cmyListB.length) return false
+
   const cmyA = cmySum(cmyListA)
   const cmyB = cmySum(cmyListB)
-
-  return cmyListA.length === cmyListB.length && cmyA.c === cmyB.c && cmyA.m === cmyB.m && cmyA.y === cmyB.y
+  return cmyA.c === cmyB.c && cmyA.m === cmyB.m && cmyA.y === cmyB.y
 }
 
 /**
