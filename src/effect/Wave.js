@@ -27,5 +27,33 @@ export default phina.define('mc.effect.Wave', {
       .call(() => {
         this.remove()
       })
+
+    const rad = 120 * Math.DEG_TO_RAD
+    const offset = Math.random() * rad
+
+    for (let i = 1; i <= 3; i++) {
+      const shape = phina.display
+        .CircleShape({
+          radius: 50,
+          stroke: 'transparent',
+          fill: color,
+        })
+        .addChildTo(this)
+
+      shape.tweener
+        .clear()
+        .to(
+          {
+            radius: 0,
+            x: Math.cos(rad * i + offset) * 300,
+            y: Math.sin(rad * i + offset) * 300,
+          },
+          200,
+          'easeOutSine'
+        )
+        .call(() => {
+          shape.remove()
+        })
+    }
   },
 })
