@@ -265,7 +265,7 @@ export default phina.define('mc.scene.MainScene', {
     this.topBar.children.forEach((star, i) => {
       star.tweener
         .clear()
-        .wait(i * 200)
+        .wait(i * 100)
         .to(
           {
             scaleX: 0,
@@ -284,7 +284,7 @@ export default phina.define('mc.scene.MainScene', {
 
     this.mtLayer.children.forEach((shape, i) => {
       shape.tweener
-        .wait(i * 200)
+        .wait(i * 100)
         .to(
           {
             scaleX: 0,
@@ -301,7 +301,7 @@ export default phina.define('mc.scene.MainScene', {
 
     this.tweener
       .clear()
-      .wait(this.mtLayer.children.length * 200 + 500)
+      .wait(this.mtLayer.children.length * 100 + 600)
       .call(() => {
         this.stage++
         this._createStage()
