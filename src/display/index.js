@@ -1,4 +1,4 @@
-export { default as Shape } from './Shape'
-export { default as RectangleShape } from './RectangleShape'
-export { default as CircleShape } from './CircleShape'
-export { default as TriangleShape } from './TriangleShape'
+export { default as MtShape } from './MtShape'
+export { default as MtRectangle } from './MtRectangle'
+export { default as MtCircle } from './MtCircle'
+export { default as MtTriangle } from './MtTriangle'

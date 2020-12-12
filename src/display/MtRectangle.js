@@ -1,10 +1,10 @@
 import phina from 'phina.js'
 import Matter from 'matter-js'
 
-import Shape from './Shape'
+import MtShape from './MtShape'
 
-export default phina.define('mc.display.RectangleShape', {
-  superClass: Shape,
+export default phina.define('mc.display.MtRectangle', {
+  superClass: MtShape,
 
   init(options) {
     options = {}.$safe(options, {

@@ -1,10 +1,10 @@
 import phina from 'phina.js'
 import Matter from 'matter-js'
 
-import Shape from './Shape'
+import MtShape from './MtShape'
 
-export default phina.define('mc.display.TriangleShape', {
-  superClass: Shape,
+export default phina.define('mc.display.MtTriangle', {
+  superClass: MtShape,
 
   /** Matter側のオブジェクトと合わせるための角度オフセット値 */
   rotationOffset: 30,

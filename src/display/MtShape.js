@@ -5,7 +5,7 @@ import { COLOR, FONT } from '../constants'
 
 import { cmyToRgb } from '../utils'
 
-export default phina.define('mc.display.Shape', {
+export default phina.define('mc.display.MtShape', {
   superClass: phina.display.Shape,
 
   /** Matter.Body */

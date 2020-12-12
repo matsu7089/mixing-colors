@@ -3,7 +3,7 @@ import Matter from 'matter-js'
 import { SCREEN, COLOR, FONT, BASE_COLOR, MIXED_COLORS } from '../constants'
 
 import { MatterLayer } from '../matter/'
-import { CircleShape, RectangleShape, TriangleShape } from '../display/'
+import { MtCircle, MtRectangle, MtTriangle } from '../display/'
 import { Wave } from '../effect/'
 
 import { cmyExact, cmyToRgb } from '../utils'
@@ -117,13 +117,13 @@ export default phina.define('mc.scene.MainScene', {
     let shape
     switch (type) {
       case 'rectangle':
-        shape = RectangleShape(options)
+        shape = MtRectangle(options)
         break
       case 'circle':
-        shape = CircleShape(options)
+        shape = MtCircle(options)
         break
       case 'triangle':
-        shape = TriangleShape(options)
+        shape = MtTriangle(options)
         break
     }
 
