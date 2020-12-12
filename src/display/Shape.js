@@ -3,6 +3,8 @@ import Matter from 'matter-js'
 
 import { COLOR, FONT } from '../constants'
 
+import { cmyToRgb } from '../utils'
+
 export default phina.define('mc.display.Shape', {
   superClass: phina.display.Shape,
 
@@ -38,25 +40,10 @@ export default phina.define('mc.display.Shape', {
    * cmyListを反映させます
    */
   applyCmyList() {
-    const len = this.cmyList.length
-    const cmy = { c: 0, m: 0, y: 0 }
+    const { cmyList } = this
 
-    this.cmyList.forEach((v) => {
-      cmy.c += v.c / len
-      cmy.m += v.m / len
-      cmy.y += v.y / len
-    })
-
-    cmy.c = Math.min(cmy.c, 1) * 0.7
-    cmy.m = Math.min(cmy.m, 1) * 0.7
-    cmy.y = Math.min(cmy.y, 1) * 0.7
-
-    const r = Math.floor((1 - cmy.c) * 255)
-    const g = Math.floor((1 - cmy.m) * 255)
-    const b = Math.floor((1 - cmy.y) * 255)
-
-    this.fill = `rgb(${r}, ${g}, ${b})`
-    this.label.text = len.toString()
+    this.fill = cmyToRgb(cmyList)
+    this.label.text = cmyList.length
 
     return this
   },
