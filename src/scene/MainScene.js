@@ -5,6 +5,7 @@ import { SCREEN, COLOR, FONT, BASE_COLOR, MIXED_COLORS } from '../constants'
 import { MatterLayer } from '../matter/'
 import { MtCircle, MtRectangle, MtTriangle, AnsStar, PauseButton } from '../display/'
 import { Wave } from '../effect/'
+import PauseScene from './PauseScene'
 
 import { cmyExact, cmyToRgb } from '../utils'
 
@@ -321,7 +322,9 @@ export default phina.define('mc.scene.MainScene', {
       })
   },
 
-  _onClickPause(e) {},
+  _onClickPause(e) {
+    this.app.pushScene(PauseScene())
+  },
 
   _createWall() {
     const size = 1000
