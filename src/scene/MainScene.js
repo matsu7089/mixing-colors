@@ -3,7 +3,7 @@ import Matter from 'matter-js'
 import { SCREEN, COLOR, FONT, BASE_COLOR, MIXED_COLORS } from '../constants'
 
 import { MatterLayer } from '../matter/'
-import { MtCircle, MtRectangle, MtTriangle } from '../display/'
+import { MtCircle, MtRectangle, MtTriangle, AnsStar } from '../display/'
 import { Wave } from '../effect/'
 
 import { cmyExact, cmyToRgb } from '../utils'
@@ -180,14 +180,12 @@ export default phina.define('mc.scene.MainScene', {
   _checkClear() {
     this.answers.forEach((ans) => {
       ans.isCorrect = false
-      ans.starShape.fill = '#fff'
     })
 
     objLoop: for (const obj of this.mtLayer.children) {
       for (const ans of this.answers) {
         if (!ans.isCorrect && cmyExact(obj.cmyList, ans.cmyList)) {
           ans.isCorrect = true
-          ans.starShape.fill = ans.starShape.stroke
           continue objLoop
         }
       }
@@ -224,21 +222,15 @@ export default phina.define('mc.scene.MainScene', {
       prevShapeIndex = shapeIndex
 
       const offsetX = (numOfQue - 1) * 50
-      const starShape = phina.display
-        .StarShape({
-          padding: 20,
-          radius: 38,
-          x: i * 100 - offsetX,
-          fill: '#fff',
-          stroke: cmyToRgb(cmyList),
-          strokeWidth: 20,
-          sideIndent: 0.5,
-          rotation: -180,
-        })
+      const star = AnsStar({
+        cmyList,
+        rotation: -180,
+        x: i * 100 - offsetX,
+      })
         .setScale(0)
         .addChildTo(this.topBar)
 
-      starShape.tweener.wait(i * 200).to(
+      star.tweener.wait(i * 200).to(
         {
           scaleX: 1,
           scaleY: 1,
@@ -248,11 +240,7 @@ export default phina.define('mc.scene.MainScene', {
         'swing'
       )
 
-      answers.push({
-        starShape,
-        cmyList,
-        isCorrect: false,
-      })
+      answers.push(star)
     }
 
     this.answers = answers
