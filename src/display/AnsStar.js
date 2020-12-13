@@ -1,5 +1,7 @@
 import phina from 'phina.js'
 
+import { Wave } from '../effect/'
+
 import { cmyToRgb } from '../utils'
 
 export default phina.define('mc.display.AnsStar', {
@@ -51,10 +53,24 @@ export default phina.define('mc.display.AnsStar', {
           strokeWidth: 8,
           stroke: '#eee',
           x: 30 * i - offsetX,
-          y: 45,
+          rotation: -180,
         })
+        .setScale(0)
         .addChildTo(this)
+        .tweener.wait(i * 100)
+        .to(
+          {
+            scaleX: 1,
+            scaleY: 1,
+            y: 40,
+            rotation: 0,
+          },
+          500,
+          'swing'
+        )
     })
+
+    Wave(this.ansColor, phina.geom.Vector2.ZERO).addChildTo(this)
   },
 
   _accessor: {
