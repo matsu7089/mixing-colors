@@ -26,6 +26,8 @@ export default phina.define('mc.scene.MainScene', {
 
   answers: null,
 
+  _sec: null,
+
   init(options) {
     this.superInit(options)
 
@@ -74,7 +76,7 @@ export default phina.define('mc.scene.MainScene', {
     this.timeLabel = phina.display
       .Label({
         ...labelOptions,
-        text: `time:\n  00:01`,
+        text: `time:\n  00:00`,
         y: 80,
       })
       .addChildTo(this)
@@ -107,6 +109,8 @@ export default phina.define('mc.scene.MainScene', {
     this.hintCnt = 0
     this.isClear = false
 
+    this._sec = 0
+
     this._createStage()
   },
 
@@ -114,6 +118,9 @@ export default phina.define('mc.scene.MainScene', {
     this.time += app.ticker.deltaTime
 
     const sec = Math.floor(this.time / 1000)
+    if (this._sec === sec) return
+
+    this._sec = sec
     const min = Math.floor(sec / 60)
 
     const strSec = (sec % 60).padding(2, '0')
