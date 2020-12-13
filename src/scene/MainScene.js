@@ -3,7 +3,7 @@ import Matter from 'matter-js'
 import { SCREEN, COLOR, FONT, BASE_COLOR, MIXED_COLORS } from '../constants'
 
 import { MatterLayer } from '../matter/'
-import { MtCircle, MtRectangle, MtTriangle, AnsStar } from '../display/'
+import { MtCircle, MtRectangle, MtTriangle, AnsStar, PauseButton } from '../display/'
 import { Wave } from '../effect/'
 
 import { cmyExact, cmyToRgb } from '../utils'
@@ -78,6 +78,17 @@ export default phina.define('mc.scene.MainScene', {
         y: 80,
       })
       .addChildTo(this)
+
+    this.pauseButton = PauseButton({
+      x: SCREEN.W - 60,
+      y: SCREEN.H / 16,
+    })
+      .setInteractive(true)
+      .addChildTo(this)
+
+    this.pauseButton.on('click', (e) => {
+      this._onClickPause(e)
+    })
 
     this.mtLayer.on('collisionStart', (e) => {
       this._onCollision(e)
@@ -302,6 +313,8 @@ export default phina.define('mc.scene.MainScene', {
         this._createStage()
       })
   },
+
+  _onClickPause(e) {},
 
   _createWall() {
     const size = 1000
