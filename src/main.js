@@ -1,11 +1,11 @@
 import phina from 'phina.js'
 import { SCREEN } from './constants'
 
-import { MainScene } from './scene/'
+import './scene/'
 
 const scenes = [
   {
-    className: MainScene.prototype.className,
+    className: 'mc.scene.MainScene',
     label: 'main',
   },
 ]
