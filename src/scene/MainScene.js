@@ -21,6 +21,7 @@ export default phina.define('mc.scene.MainScene', {
   level: null,
   stage: null,
   time: null,
+  hintCnt: null,
   isClear: null,
 
   answers: null,
@@ -92,6 +93,7 @@ export default phina.define('mc.scene.MainScene', {
     this.time = 0
     this.level = 1
     this.stage = 1
+    this.hintCnt = 0
     this.isClear = false
 
     this._createStage()
@@ -193,6 +195,11 @@ export default phina.define('mc.scene.MainScene', {
 
     if (this.answers.every((v) => v.isCorrect)) {
       this.isClear = true
+
+      this.hintCnt += this.answers.reduce((a, c) => {
+        return c.isClicked ? a + 1 : a
+      }, 0)
+
       this._transionNextStage()
     }
   },
