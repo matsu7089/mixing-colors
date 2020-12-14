@@ -318,7 +318,16 @@ export default phina.define('mc.scene.MainScene', {
       .wait(this.mtLayer.children.length * 100 + 600)
       .call(() => {
         this.stage++
-        this._createStage()
+
+        if (this.stage === 4) {
+          this.exit('result', {
+            level: this.level,
+            time: this.time,
+            hintCnt: this.hintCnt,
+          })
+        } else {
+          this._createStage()
+        }
       })
   },
 

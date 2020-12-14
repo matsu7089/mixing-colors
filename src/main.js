@@ -8,6 +8,10 @@ const scenes = [
     className: 'mc.scene.MainScene',
     label: 'main',
   },
+  {
+    className: 'mc.scene.ResultScene',
+    label: 'result',
+  },
 ]
 
 phina.main(() => {
