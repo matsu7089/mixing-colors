@@ -29,12 +29,14 @@ export default phina.define('mc.display.MtTriangle', {
     // mtBodyから自分にアクセスできるようにする
     this.mtBody.plugin.mcObject = this
 
-    // mtBodyと同期
-    this.on('enterframe', (e) => {
-      this.x = this.mtBody.position.x
-      this.y = this.mtBody.position.y
-      this.rotation = this.mtBody.angle * Math.RAD_TO_DEG + this.rotationOffset
-    })
+    if (!options.unsync) {
+      // mtBodyと同期
+      this.on('enterframe', (e) => {
+        this.x = this.mtBody.position.x
+        this.y = this.mtBody.position.y
+        this.rotation = this.mtBody.angle * Math.RAD_TO_DEG + this.rotationOffset
+      })
+    }
   },
 
   /**
