@@ -11,10 +11,25 @@ export default phina.define('mc.scene.ResultScene', {
   init(options) {
     this.superInit(options)
 
-    this.backgroundColor = '#eee'
+    const color = cmyToRgb(MIXED_COLORS.pickup())
+    this.backgroundColor = color
+
+    const layer = phina.display
+      .CanvasLayer({
+        width: SCREEN.W,
+        heigth: SCREEN.H,
+      })
+      .setOrigin(0, 0)
+      .addChildTo(this)
+
+    layer.backgroundColor = 'rgba(0, 0, 0, 0.5)'
 
     // MainSceneから渡されるデータ
-    const { level, time, hintCnt } = options
+    // const { level, time, hintCnt } = options
+    const level = 1
+    const time = 135000
+    const hintCnt = 10
+
     const total = time + 30000 * hintCnt
 
     const timeToString = (time) => {
@@ -26,21 +41,22 @@ export default phina.define('mc.scene.ResultScene', {
     const text = [
       `Result`,
       ``,
-      `time:  ${timeToString(time)}`,
-      `hint:  00:30 x ${hintCnt}`,
-      `────────`,
       `level:  ${level}`,
-      `total:  ${timeToString(total)}`,
+      ``,
+      `time:  ${timeToString(time)}`,
+      `hint x ${hintCnt}`,
+      `────────`,
+      `score:  ${timeToString(total)}`,
     ].join('\n')
 
     phina.display
       .Label({
         text,
-        fill: '#888',
+        fill: '#fff',
         fontFamily: FONT.DEFAULT,
         stroke: 'transparent',
         fontSize: 48,
-        fontWeight: '300',
+        fontWeight: '700',
         x: this.gridX.center(),
         y: this.gridY.span(5),
       })
@@ -48,11 +64,11 @@ export default phina.define('mc.scene.ResultScene', {
 
     const buttonOptions = {
       fill: 'transparent',
-      stroke: '#888',
-      strokeWidth: 2,
-      fontColor: '#888',
+      stroke: '#fff',
+      strokeWidth: 4,
+      fontColor: '#fff',
       fontFamily: FONT.DEFAULT,
-      fontWeight: '300',
+      fontWeight: '700',
       x: this.gridX.center(),
     }
 
@@ -60,7 +76,7 @@ export default phina.define('mc.scene.ResultScene', {
       .Button({
         ...buttonOptions,
         text: 'ツイート',
-        y: this.gridY.span(11),
+        y: this.gridY.span(12),
       })
       .addChildTo(this)
 
@@ -68,7 +84,7 @@ export default phina.define('mc.scene.ResultScene', {
       .Button({
         ...buttonOptions,
         text: 'タイトルへ',
-        y: this.gridY.span(13),
+        y: this.gridY.span(14),
       })
       .addChildTo(this)
 
