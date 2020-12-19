@@ -5,6 +5,10 @@ import './scene/'
 
 const scenes = [
   {
+    className: 'mc.scene.TitleScene',
+    label: 'title',
+  },
+  {
     className: 'mc.scene.MainScene',
     label: 'main',
   },
@@ -22,7 +26,7 @@ phina.main(() => {
   const app = phina.game.GameApp({
     width: SCREEN.W,
     height: SCREEN.H,
-    startLabel: 'main',
+    startLabel: 'title',
     runner,
     scenes,
   })
