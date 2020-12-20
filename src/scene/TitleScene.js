@@ -4,7 +4,7 @@ import { SCREEN, COLOR, MIXED_COLORS, FONT } from '../constants'
 
 import { MatterLayer } from '../matter/'
 import { MtRectangle, MtCircle, MtTriangle } from '../display/'
-import { HowToScene } from '../scene/'
+import { HowToScene, MainScene } from '../scene/'
 
 export default phina.define('mc.scene.TitleScene', {
   superClass: phina.display.DisplayScene,
@@ -159,7 +159,11 @@ export default phina.define('mc.scene.TitleScene', {
     })
 
     startButton.on('click', () => {
-      this.exit('main', { level })
+      this.app.replaceScene(
+        MainScene({
+          level,
+        })
+      )
     })
 
     howtoButton.on('click', () => {
