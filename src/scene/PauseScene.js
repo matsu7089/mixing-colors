@@ -1,6 +1,7 @@
 import phina from 'phina.js'
 
 import { FONT } from '../constants'
+import TitleScene from './TitleScene'
 
 export default phina.define('mc.scene.PauseScene', {
   superClass: phina.display.DisplayScene,
@@ -53,6 +54,8 @@ export default phina.define('mc.scene.PauseScene', {
       this.exit()
     })
 
-    titleButton.on('click', (e) => {})
+    titleButton.on('click', (e) => {
+      this.app.replaceScene(TitleScene())
+    })
   },
 })
