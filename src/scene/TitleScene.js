@@ -4,6 +4,7 @@ import { SCREEN, COLOR, MIXED_COLORS, FONT } from '../constants'
 
 import { MatterLayer } from '../matter/'
 import { MtRectangle, MtCircle, MtTriangle } from '../display/'
+import { HowToScene } from '../scene/'
 
 export default phina.define('mc.scene.TitleScene', {
   superClass: phina.display.DisplayScene,
@@ -138,6 +139,10 @@ export default phina.define('mc.scene.TitleScene', {
         y: this.gridY.center(),
       })
       .addChildTo(this)
+
+    howtoButton.on('click', () => {
+      this.app.pushScene(HowToScene())
+    })
   },
 
   _createWall() {
