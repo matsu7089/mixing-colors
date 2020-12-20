@@ -116,6 +116,10 @@ export default phina.define('mc.scene.MainScene', {
     this._createStage()
   },
 
+  /**
+   * 毎フレーム処理
+   * timeラベルの表示を更新
+   */
   update(app) {
     this.time += app.ticker.deltaTime
 
@@ -131,6 +135,13 @@ export default phina.define('mc.scene.MainScene', {
     this.timeLabel.text = `time:\n  ${strMin}:${strSec}`
   },
 
+  /**
+   * 指定の形、色のMtShapeを出現
+   *
+   * @param {*} type 図形種類
+   * @param {*} cmy
+   * @param {*} [position]
+   */
   _spawn(type, cmy, position) {
     const options = {
       cmyList: [cmy],
@@ -155,6 +166,9 @@ export default phina.define('mc.scene.MainScene', {
     shape.mtSetAngularVelocity(Math.randfloat(-0.5, 0.5))
   },
 
+  /**
+   * 衝突が発生したときのコールバック
+   */
   _onCollision(e) {
     if (this.isClear) return
 
@@ -199,6 +213,9 @@ export default phina.define('mc.scene.MainScene', {
     }
   },
 
+  /**
+   * クリア確認。AnsStarの状態を切り替え
+   */
   _checkClear() {
     this.answers.forEach((ans) => {
       ans.isCorrect = false
@@ -224,6 +241,9 @@ export default phina.define('mc.scene.MainScene', {
     }
   },
 
+  /**
+   * ステージを作成
+   */
   _createStage() {
     const answers = []
 
@@ -276,6 +296,10 @@ export default phina.define('mc.scene.MainScene', {
     this.isClear = false
   },
 
+  /**
+   * 次ステージに遷移するときの処理
+   * （エフェクトの表示とcreateStage呼び出し）
+   */
   _transionNextStage() {
     this.topBar.children.forEach((star, i) => {
       star.tweener
@@ -334,10 +358,16 @@ export default phina.define('mc.scene.MainScene', {
       })
   },
 
+  /**
+   * Pauseボタンが押された時
+   */
   _onClickPause(e) {
     this.app.pushScene(PauseScene())
   },
 
+  /**
+   * 壁作成
+   */
   _createWall() {
     const size = 1000
 
