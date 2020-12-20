@@ -105,7 +105,7 @@ export default phina.define('mc.scene.MainScene', {
     })
 
     this.time = 0
-    this.level = 1
+    this.level = options.level
     this.stage = 1
     this.hintCnt = 0
     this.isClear = false
