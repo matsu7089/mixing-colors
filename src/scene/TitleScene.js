@@ -54,7 +54,7 @@ export default phina.define('mc.scene.TitleScene', {
       .Label({
         text: 'いろづくり',
         fontSize: 72,
-        fontFamily: FONT.DEFAULT,
+        fontFamily: FONT,
         fontWeight: '700',
         fill: '#fff',
         stroke: false,
@@ -69,7 +69,7 @@ export default phina.define('mc.scene.TitleScene', {
       stroke: '#fff',
       strokeWidth: 4,
       fontColor: '#fff',
-      fontFamily: FONT.DEFAULT,
+      fontFamily: FONT,
       fontWeight: '700',
     }
 
@@ -95,7 +95,7 @@ export default phina.define('mc.scene.TitleScene', {
       .Label({
         text: 'レベル',
         fontSize: 48,
-        fontFamily: FONT.DEFAULT,
+        fontFamily: FONT,
         fontWeight: '700',
         fill: '#fff',
         stroke: false,
@@ -108,7 +108,7 @@ export default phina.define('mc.scene.TitleScene', {
       .Label({
         text: '1',
         fontSize: 72,
-        fontFamily: FONT.DEFAULT,
+        fontFamily: FONT,
         fontWeight: '700',
         fill: '#fff',
         stroke: false,

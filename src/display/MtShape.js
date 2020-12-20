@@ -25,7 +25,7 @@ export default phina.define('mc.display.MtShape', {
         fontSize: 50,
         text: '1',
         fill: '#888',
-        fontFamily: FONT.DEFAULT,
+        fontFamily: FONT,
         fontWeight: '700',
         stroke: '#fff',
         strokeWidth: 12,

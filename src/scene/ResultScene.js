@@ -52,7 +52,7 @@ export default phina.define('mc.scene.ResultScene', {
       .Label({
         text,
         fill: '#fff',
-        fontFamily: FONT.DEFAULT,
+        fontFamily: FONT,
         stroke: false,
         fontSize: 48,
         fontWeight: '700',
@@ -66,7 +66,7 @@ export default phina.define('mc.scene.ResultScene', {
       stroke: '#fff',
       strokeWidth: 4,
       fontColor: '#fff',
-      fontFamily: FONT.DEFAULT,
+      fontFamily: FONT,
       fontWeight: '700',
       x: this.gridX.center(),
     }

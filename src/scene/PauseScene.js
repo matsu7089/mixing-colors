@@ -15,7 +15,7 @@ export default phina.define('mc.scene.PauseScene', {
       .Label({
         text: 'Pause',
         fill: '#888',
-        fontFamily: FONT.DEFAULT,
+        fontFamily: FONT,
         stroke: false,
         fontSize: 48,
         fontWeight: '700',
@@ -29,7 +29,7 @@ export default phina.define('mc.scene.PauseScene', {
       stroke: '#888',
       strokeWidth: 4,
       fontColor: '#888',
-      fontFamily: FONT.DEFAULT,
+      fontFamily: FONT,
       fontWeight: '700',
       x: this.gridX.center(),
     }

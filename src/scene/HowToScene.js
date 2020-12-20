@@ -24,14 +24,14 @@ export default phina.define('mc.scene.HowToScene', {
       stroke: '#fff',
       strokeWidth: 4,
       fontColor: '#fff',
-      fontFamily: FONT.DEFAULT,
+      fontFamily: FONT,
       fontWeight: '700',
     }
 
     const labelOptions = {
       fill: '#fff',
       fontSize: 30,
-      fontFamily: FONT.DEFAULT,
+      fontFamily: FONT,
       fontWeight: '700',
     }
 
@@ -419,7 +419,7 @@ export default phina.define('mc.scene.HowToScene', {
       .Label({
         fill: '#777',
         fontSize: 30,
-        fontFamily: FONT.DEFAULT,
+        fontFamily: FONT,
         fontWeight: '700',
         text: '↑タップしてみよう↑',
         y: 120,
@@ -451,7 +451,7 @@ export default phina.define('mc.scene.HowToScene', {
         .Label({
           fill: '#777',
           fontSize: 30,
-          fontFamily: FONT.DEFAULT,
+          fontFamily: FONT,
           fontWeight: '700',
           text: '→',
           x: i < 6 ? -105 : 165,
@@ -496,7 +496,7 @@ export default phina.define('mc.scene.HowToScene', {
         .Label({
           fill: '#777',
           fontSize: 30,
-          fontFamily: FONT.DEFAULT,
+          fontFamily: FONT,
           fontWeight: '700',
           text: '→',
           x: i < 6 ? -105 : 165,

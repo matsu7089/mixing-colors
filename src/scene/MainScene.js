@@ -61,7 +61,7 @@ export default phina.define('mc.scene.MainScene', {
     const labelOptions = {
       fill: '#888',
       fontSize: 28,
-      fontFamily: FONT.DEFAULT,
+      fontFamily: FONT,
       fontWeight: '700',
       align: 'left',
       x: 10,

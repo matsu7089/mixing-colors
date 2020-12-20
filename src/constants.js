@@ -3,9 +3,7 @@ export const SCREEN = {
   H: 960,
 }
 
-export const FONT = {
-  DEFAULT: "'M PLUS Rounded 1c', sans-serif",
-}
+export const FONT = "'M PLUS Rounded 1c', sans-serif"
 
 // prettier-ignore
 const cyan    = { c: 1, m: 0, y: 0 },
