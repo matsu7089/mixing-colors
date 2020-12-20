@@ -62,7 +62,7 @@ export default phina.define('mc.scene.MainScene', {
       fill: '#888',
       fontSize: 28,
       fontFamily: FONT.DEFAULT,
-      fontWeight: '300',
+      fontWeight: '700',
       align: 'left',
       x: 10,
     }
