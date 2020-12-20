@@ -12,7 +12,7 @@ export default phina.define('mc.display.MtRectangle', {
       height: 100,
       backgroundColor: 'transparent',
       fill: 'blue',
-      stroke: 'transparent',
+      stroke: false,
       cornerRadius: 0,
     })
     this.superInit(options)

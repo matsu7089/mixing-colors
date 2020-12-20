@@ -53,7 +53,7 @@ export default phina.define('mc.scene.ResultScene', {
         text,
         fill: '#fff',
         fontFamily: FONT.DEFAULT,
-        stroke: 'transparent',
+        stroke: false,
         fontSize: 48,
         fontWeight: '700',
         x: this.gridX.center(),
@@ -62,7 +62,7 @@ export default phina.define('mc.scene.ResultScene', {
       .addChildTo(this)
 
     const buttonOptions = {
-      fill: 'transparent',
+      fill: false,
       stroke: '#fff',
       strokeWidth: 4,
       fontColor: '#fff',

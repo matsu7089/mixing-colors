@@ -7,7 +7,7 @@ export default phina.define('mc.display.PauseButton', {
     options = {}.$safe(options, {
       width: 48,
       height: 48,
-      fill: 'transparent',
+      fill: false,
       stroke: '#888',
       strokeWidth: 4,
       cornerRadius: 2,
@@ -17,7 +17,7 @@ export default phina.define('mc.display.PauseButton', {
     const rectOptions = {
       width: 12,
       height: 24,
-      fill: 'transparent',
+      fill: false,
       stroke: '#888',
       strokeWidth: 4,
       cornerRadius: 2,

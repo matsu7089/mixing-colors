@@ -16,7 +16,7 @@ export default phina.define('mc.scene.PauseScene', {
         text: 'Pause',
         fill: '#888',
         fontFamily: FONT.DEFAULT,
-        stroke: 'transparent',
+        stroke: false,
         fontSize: 48,
         fontWeight: '700',
         x: this.gridX.center(),
@@ -25,7 +25,7 @@ export default phina.define('mc.scene.PauseScene', {
       .addChildTo(this)
 
     const buttonOptions = {
-      fill: 'transparent',
+      fill: false,
       stroke: '#888',
       strokeWidth: 4,
       fontColor: '#888',

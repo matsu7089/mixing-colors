@@ -7,7 +7,7 @@ export default phina.define('mc.effect.Wave', {
     this.superInit({
       padding: 50,
       radius: 50,
-      fill: 'transparent',
+      fill: false,
       stroke: color,
       strokeWidth: 50,
       x: position.x,
@@ -35,7 +35,7 @@ export default phina.define('mc.effect.Wave', {
       const shape = phina.display
         .CircleShape({
           radius: 50,
-          stroke: 'transparent',
+          stroke: false,
           fill: color,
         })
         .addChildTo(this)

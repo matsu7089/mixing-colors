@@ -20,7 +20,7 @@ export default phina.define('mc.scene.HowToScene', {
     const buttonOptions = {
       width: 80,
       height: 80,
-      fill: 'transparent',
+      fill: false,
       stroke: '#fff',
       strokeWidth: 4,
       fontColor: '#fff',
@@ -155,7 +155,7 @@ export default phina.define('mc.scene.HowToScene', {
       phina.display
         .CircleShape({
           radius: 25,
-          stroke: 'transparent',
+          stroke: false,
           fill: cmyToRgb([cmy]),
           x: i * 60 - 180,
           y: -80,
@@ -439,7 +439,7 @@ export default phina.define('mc.scene.HowToScene', {
         phina.display
           .CircleShape({
             radius: 25,
-            stroke: 'transparent',
+            stroke: false,
             fill: cmyToRgb([cmy]),
             x: i < 6 ? j * 60 - 225 : j * 60 + 45,
             y: (i % 6) * 60 - 150,
@@ -462,7 +462,7 @@ export default phina.define('mc.scene.HowToScene', {
       phina.display
         .CircleShape({
           radius: 25,
-          stroke: 'transparent',
+          stroke: false,
           fill: cmyToRgb(cmyList),
           x: i < 6 ? -45 : 225,
           y: (i % 6) * 60 - 150,
@@ -507,7 +507,7 @@ export default phina.define('mc.scene.HowToScene', {
       phina.display
         .CircleShape({
           radius: 25,
-          stroke: 'transparent',
+          stroke: false,
           fill: cmyToRgb(cmyList),
           x: i < 6 ? -45 : 225,
           y: (i % 6) * 60 - 150,

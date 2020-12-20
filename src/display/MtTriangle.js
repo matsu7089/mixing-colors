@@ -13,7 +13,7 @@ export default phina.define('mc.display.MtTriangle', {
     options = {}.$safe(options, {
       backgroundColor: 'transparent',
       fill: 'green',
-      stroke: 'transparent',
+      stroke: false,
       radius: 87,
     })
     this.superInit(options)

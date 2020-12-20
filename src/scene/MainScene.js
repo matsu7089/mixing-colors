@@ -50,7 +50,7 @@ export default phina.define('mc.scene.MainScene', {
     this.topBar = phina.display
       .RectangleShape({
         fill: '#fff',
-        stroke: 'transparent',
+        stroke: false,
         width: SCREEN.W,
         height: SCREEN.H / 8,
         x: SCREEN.W / 2,

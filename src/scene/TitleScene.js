@@ -57,7 +57,7 @@ export default phina.define('mc.scene.TitleScene', {
         fontFamily: FONT.DEFAULT,
         fontWeight: '700',
         fill: '#fff',
-        stroke: 'transparent',
+        stroke: false,
         strokeWidth: 18,
         y: this.gridY.span(3),
         x: SCREEN.W / 2,
@@ -65,7 +65,7 @@ export default phina.define('mc.scene.TitleScene', {
       .addChildTo(this)
 
     const buttonOptions = {
-      fill: 'transparent',
+      fill: false,
       stroke: '#fff',
       strokeWidth: 4,
       fontColor: '#fff',
@@ -98,7 +98,7 @@ export default phina.define('mc.scene.TitleScene', {
         fontFamily: FONT.DEFAULT,
         fontWeight: '700',
         fill: '#fff',
-        stroke: 'transparent',
+        stroke: false,
         x: this.gridX.center(),
         y: this.gridY.span(6),
       })
@@ -111,7 +111,7 @@ export default phina.define('mc.scene.TitleScene', {
         fontFamily: FONT.DEFAULT,
         fontWeight: '700',
         fill: '#fff',
-        stroke: 'transparent',
+        stroke: false,
         strokeWidth: 18,
         x: this.gridX.center(),
         y: this.gridY.center(),

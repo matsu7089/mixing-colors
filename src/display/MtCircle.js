@@ -10,7 +10,7 @@ export default phina.define('mc.display.MtCircle', {
     options = {}.$safe(options, {
       backgroundColor: 'transparent',
       fill: 'red',
-      stroke: 'transparent',
+      stroke: false,
       radius: 56,
     })
     this.superInit(options)
