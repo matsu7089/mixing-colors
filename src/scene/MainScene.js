@@ -1,6 +1,6 @@
 import phina from 'phina.js'
 import Matter from 'matter-js'
-import { SCREEN, COLOR, FONT, BASE_COLOR, MIXED_COLORS } from '../constants'
+import { SCREEN, FONT, BASE_COLOR, MIXED_COLORS } from '../constants'
 
 import { MatterLayer } from '../matter/'
 import { MtCircle, MtRectangle, MtTriangle, AnsStar, PauseButton } from '../display/'
@@ -36,7 +36,7 @@ export default phina.define('mc.scene.MainScene', {
     this.baseColors = Object.values(BASE_COLOR)
     this.mixedColors = MIXED_COLORS
 
-    this.backgroundColor = COLOR.BASE
+    this.backgroundColor = '#eee'
 
     this.mtLayer = MatterLayer({
       width: SCREEN.W,
