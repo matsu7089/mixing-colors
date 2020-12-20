@@ -140,6 +140,28 @@ export default phina.define('mc.scene.TitleScene', {
       })
       .addChildTo(this)
 
+    let level = 1
+
+    leftButton.on('click', () => {
+      level--
+      if (level === 0) {
+        level = 3
+      }
+      levelLabel.text = level
+    })
+
+    rightButton.on('click', () => {
+      level++
+      if (level === 4) {
+        level = 1
+      }
+      levelLabel.text = level
+    })
+
+    startButton.on('click', () => {
+      this.exit('main', { level })
+    })
+
     howtoButton.on('click', () => {
       this.app.pushScene(HowToScene())
     })
