@@ -6,6 +6,7 @@ import { MatterLayer } from '../matter/'
 import { MtCircle, MtRectangle, MtTriangle, AnsStar, PauseButton } from '../display/'
 import { Wave } from '../effect/'
 import PauseScene from './PauseScene'
+import ResultScene from './ResultScene'
 
 import { cmyExact, cmyToRgb } from '../utils'
 
@@ -320,11 +321,13 @@ export default phina.define('mc.scene.MainScene', {
         this.stage++
 
         if (this.stage === 4) {
-          this.exit('result', {
-            level: this.level,
-            time: this.time,
-            hintCnt: this.hintCnt,
-          })
+          this.app.replaceScene(
+            ResultScene({
+              level: this.level,
+              time: this.time,
+              hintCnt: this.hintCnt,
+            })
+          )
         } else {
           this._createStage()
         }
