@@ -9,7 +9,7 @@ export default phina.define('mc.display.PauseButton', {
       height: 48,
       fill: 'transparent',
       stroke: '#888',
-      strokeWidth: 1,
+      strokeWidth: 4,
       cornerRadius: 2,
     })
     this.superInit(options)
@@ -19,7 +19,7 @@ export default phina.define('mc.display.PauseButton', {
       height: 24,
       fill: 'transparent',
       stroke: '#888',
-      strokeWidth: 1,
+      strokeWidth: 4,
       cornerRadius: 2,
     }
 
