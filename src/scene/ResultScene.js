@@ -1,4 +1,5 @@
 import phina from 'phina.js'
+import { TitleScene } from '.'
 import { FONT, MIXED_COLORS, SCREEN } from '../constants'
 
 import { Wave } from '../effect/'
@@ -25,12 +26,10 @@ export default phina.define('mc.scene.ResultScene', {
     layer.backgroundColor = 'rgba(0, 0, 0, 0.5)'
 
     // MainSceneから渡されるデータ
-    // const { level, time, hintCnt } = options
-    const level = 1
-    const time = 135000
-    const hintCnt = 10
+    const { level, time, hintCnt } = options
 
-    const total = time + 30000 * hintCnt
+    const targetTime = level * 3 * 60000
+    const score = Math.floor((targetTime / (time + hintCnt * 30000)) * 1000)
 
     const timeToString = (time) => {
       const sec = Math.floor(time / 1000)
@@ -46,7 +45,7 @@ export default phina.define('mc.scene.ResultScene', {
       `time:  ${timeToString(time)}`,
       `hint x ${hintCnt}`,
       `────────`,
-      `score:  ${timeToString(total)}`,
+      `score:  ${score}`,
     ].join('\n')
 
     phina.display
@@ -87,6 +86,10 @@ export default phina.define('mc.scene.ResultScene', {
         y: this.gridY.span(14),
       })
       .addChildTo(this)
+
+    titleButton.on('click', () => {
+      this.app.replaceScene(TitleScene())
+    })
 
     const createEffect = () => {
       const cmyList = MIXED_COLORS.pickup()
